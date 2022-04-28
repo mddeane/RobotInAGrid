@@ -1,0 +1,41 @@
+button {
+    font-size: 30px;
+}
+
+.square {
+    width: 48px;
+    height: 48px;
+    background-color: #cccccc;
+    margin: 0px 1px 1px 0px;
+    float: left;
+    font-size: 15px;
+    text-align: center;
+    line-height: 45px;
+}
+
+.blocked {
+    background-color: #000000;
+    color: #cccccc;
+}
+
+.open {
+    background-color: #cccccc;
+}
+
+.path {
+    background-color: #258b3e;
+    color: #ffffff;
+}
+
+.no-go {
+    background-color: #8b2a2a;
+    color: #ffffff;
+}
+
+.show {
+    display: block;
+}
+
+.hide {
+    display: none;
+}

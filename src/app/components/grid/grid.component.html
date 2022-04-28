@@ -1,0 +1,61 @@
+<div class="container">
+    <div class="row text-center">
+        <div class="col-12">
+            Robot in a grid!
+        </div>
+        <div class="col-12" style="font-size: 20px;">
+            <p class="m-0">The robot can move down and to the right, but can't go through the blocked squares.</p>
+            <p class="m-0"> Click "Go" to see if it can reach the end of the grid.</p>
+            <p class="m-0"> Click "New Grid" for a different, random grid.</p>
+        </div>
+    </div>
+    <div class="row d-flex justify-content-center">
+        <div class="d-flex justify-content-center">
+            <div class="col text-center">
+                <button class="btn btn-primary mx-2" (click)="makeGrid()">New Grid</button>
+                <button class="btn btn-primary mx-2" (click)="go()">Go</button>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="d-flex justify-content-center">
+            <div *ngFor="let c of cols">
+                <div *ngFor="let r of rows">
+                    <div class="square"
+                        [ngClass]="[completed && goMoveArray.includes(squareArray[(c - 1 + (cols.length * (r-1)))].id) ? 'path' : '', squareArray[(c - 1 + (cols.length * (r-1)))].state > blockedCutoff ? 'blocked' : 'open', noGo && squareArray[(c - 1 + (cols.length * (r-1)))].id == 0 ? 'no-go' : '']"
+                        id="square{{(c - 1 + (cols.length * (r-1)))}}">
+                        <span
+                            [ngClass]="!completed && squareArray[(c - 1 + (cols.length * (r-1)))].id == 0 ? 'show' : 'hide'">{{robot}}</span>
+                        <span
+                            [ngClass]="completed && squareArray[(c - 1 + (cols.length * (r-1)))].id == squareArray.length - 1 ? 'show' : 'hide'">{{robot}}</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row my-2 text-center">
+        <div class="col">
+            <div [ngClass]="completed ? 'path' : 'hide'">Success!</div>
+            <div [ngClass]="noGo ? 'no-go' : 'hide'">Failure!</div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-6">
+            Rows: {{r}}
+        </div>
+        <div class="col-md-6">
+            Columns: {{c}}
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            Squares: {{totalSquares}}
+        </div>
+        <div class="col-md-6">
+            Moves: {{moves}}
+        </div>
+        <div class="col-lg-6">
+            Paths: {{paths}}
+        </div>
+    </div>
+</div>
